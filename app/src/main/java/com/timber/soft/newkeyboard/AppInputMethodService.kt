@@ -2,17 +2,27 @@ package com.timber.soft.newkeyboard
 
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
+import android.view.View
 
-class AppInputMethodService :InputMethodService(),OnKeyboardActionListener{
+class AppInputMethodService : InputMethodService(), OnKeyboardActionListener {
 
 
     /**
-     * 向用户展示
+     * 构建键盘视图
+     */
+    override fun onCreateInputView(): View {
+        return super.onCreateInputView()
+        TODO("Not yet implemented")
+    }
+
+
+    /**
+     * 向用户展示键盘时候调用
      */
     override fun onWindowShown() {
         super.onWindowShown()
+        TODO("Not yet implemented")
     }
-
 
 
     /**
@@ -32,6 +42,7 @@ class AppInputMethodService :InputMethodService(),OnKeyboardActionListener{
     override fun onKey(primaryCode: Int, keyCodes: IntArray?) {
         TODO("Not yet implemented")
     }
+
 
     override fun onText(text: CharSequence?) {
 
