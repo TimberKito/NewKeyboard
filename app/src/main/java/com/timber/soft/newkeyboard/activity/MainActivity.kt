@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragmentList: ArrayList<Fragment>
+    private val rootModelList: MutableList<RootModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +63,27 @@ class MainActivity : AppCompatActivity() {
 
         initDrawer()
 
-        val rootModelList: MutableList<RootModel> = mutableListOf()
+        initTabLayOut()
+
+        binding.viewpager.offscreenPageLimit = 3
+        binding.viewpager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
+            override fun getCount(): Int {
+                return fragmentList.size
+            }
+
+            override fun getItem(position: Int): Fragment {
+                return fragmentList[position]
+            }
+
+            override fun getPageTitle(position: Int): CharSequence {
+                return rootModelList[position].className
+            }
+        }
+        binding.tabLayout.setupWithViewPager(binding.viewpager)
+
+    }
+
+    private fun initTabLayOut() {
         val result = parseJsonFromAssets(this@MainActivity, "keyboard.json")
         if (result != null) {
             rootModelList.addAll(result)
@@ -101,27 +122,7 @@ class MainActivity : AppCompatActivity() {
                 // null
             }
         })
-
-
-        binding.viewpager.offscreenPageLimit = 3
-        binding.viewpager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
-            override fun getCount(): Int {
-                return fragmentList.size
-            }
-
-            override fun getItem(position: Int): Fragment {
-                return fragmentList[position]
-            }
-
-            override fun getPageTitle(position: Int): CharSequence? {
-                return rootModelList[position].className
-            }
-        }
-        binding.tabLayout.setupWithViewPager(binding.viewpager)
-
-
     }
-
 
     private fun setTabSize(p0: TabLayout.Tab?) {
         val textView = TextView(this)
