@@ -155,6 +155,10 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(Intent.EXTRA_TEXT, url)
             startActivity(intent)
         }
+        binding.layoutSet.setOnClickListener() {
+            val intent = Intent(this, ApplyActivity::class.java)
+            startActivity(intent)
+        }
         // 绑定抽屉中的版本信息
         val versionName = getVersionName()
         binding.textAppVersion.text = versionName

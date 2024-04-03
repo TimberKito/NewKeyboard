@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import androidx.viewpager.widget.PagerAdapter
 import com.timber.soft.newkeyboard.R
+import com.timber.soft.newkeyboard.activity.DetailsActivity
 import com.timber.soft.newkeyboard.adapter.MyPagerAdapter
 import com.timber.soft.newkeyboard.model.DataModel
 import com.timber.soft.newkeyboard.model.RootModel
@@ -32,15 +32,10 @@ class VPFragment(private val rootModel: RootModel) : Fragment() {
             requireContext(), rootModel,
             object : MyPagerAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int, dataModel: DataModel) {
-//                    val intent = Intent(requireContext(), SetImgActivity::class.java)
-//                    intent.putExtra("KEY_EXTRA", dataModel)
-
-                    Log.e("onClick", "item has been click!")
-                    Toast.makeText(
-                        context,
-                        "item has been click!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    val intent = Intent(requireContext(), DetailsActivity::class.java)
+                    intent.putExtra("KEY_EXTRA", dataModel)
+                    startActivity(intent)
+                    Log.d("onClick", "item has been click!")
                 }
             }
         )

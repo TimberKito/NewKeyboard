@@ -2,5 +2,11 @@
     <string name="app_name">NewKeyboard</string>
     <string name="main_menu_share">Share our Apps</string>
     <string name="main_menu_rate">Find us in store</string>
+    <string name="main_menu_set">Setting</string>
     <string name="share_link">https://play.google.com/store/apps/details?id=</string>
+    <string name="download_apply">Download &amp; Apply</string>
+    <string name="apply_title">Applying</string>
+    <string name="more_feature">Activate Soft Keyboard to enable more features!</string>
+    <string name="apply_step1_select">Step 1: Select</string>
+    <string name="apply_step2_eanble">Step 2: Enable</string>
 </resources>

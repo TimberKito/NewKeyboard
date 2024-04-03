@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.timber.soft.newkeyboard.R
 import com.timber.soft.newkeyboard.model.DataModel
 import com.timber.soft.newkeyboard.model.RootModel
@@ -22,20 +23,23 @@ class MyPagerAdapter(
     private val dataModels = model.list
 
     inner class PreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        /**
+         * 640*444
+         */
         fun loadPreImg(context: Context, thumb: String, imgItemView: ImageView) {
             try {
                 Glide.with(context).load(thumb)
                     // 缓存
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     // 加载占位图
-//                    .apply(
-//                        RequestOptions().placeholder(R.drawable.img_loading)
-//                    )
+                    .apply(
+                        RequestOptions().placeholder(R.drawable.png_loading)
+                    )
                     // 淡入动画
                     .transition(DrawableTransitionOptions.withCrossFade())
                     // 加载失败占位图
-//                    .error(R.drawable.img_loading_err)
-                    .into(imgItemView)
+                    .error(R.drawable.png_loading_err).into(imgItemView)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
