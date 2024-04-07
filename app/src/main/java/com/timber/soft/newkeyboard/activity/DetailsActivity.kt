@@ -63,12 +63,10 @@ class DetailsActivity : AppCompatActivity(), ApplyListener {
         inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         dataModel = intent.getSerializableExtra("KEY_EXTRA") as DataModel
 
-
         previewUrl = dataModel.thumb
         val cacheDir = cacheDir
         val dataModelUrl = dataModel.zipUrl
         zipPath = "$cacheDir/$dataModelUrl"
-
 
 
         binding.detailsBack.setOnClickListener(View.OnClickListener {
@@ -134,7 +132,8 @@ class DetailsActivity : AppCompatActivity(), ApplyListener {
             return
         }
 
-        binding.themeProgressbar.visibility = View.VISIBLE
+        binding.coverView.visibility = View.VISIBLE
+
         val file = File(zipPath)
         // 判断缓存中是否存在文件
         if (file.exists()) {
@@ -298,7 +297,7 @@ class DetailsActivity : AppCompatActivity(), ApplyListener {
      * 点击设置后的回调接口
      */
     override fun applyListener(isSuccess: Boolean, str: String) {
-        binding.themeProgressbar.visibility = View.GONE
+        binding.coverView.visibility = View.GONE
         if (isSuccess) {
             val lastIndexOf: Int = str.lastIndexOf(AppVal.res_path)
             val substring = str.subSequence(0, lastIndexOf + AppVal.res_path.length).toString()

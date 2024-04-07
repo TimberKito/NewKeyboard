@@ -136,9 +136,9 @@ class AppInputMethodService : InputMethodService(), OnKeyboardActionListener {
                         }
                     }
                 }
-
             }
 
+            // 点击完成
             Keyboard.KEYCODE_DONE -> {
                 currentInputConnection.performEditorAction(EditorInfo.IME_ACTION_DONE)
             }

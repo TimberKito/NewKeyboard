@@ -12,4 +12,5 @@
     <string name="succ_apply">Application successful</string>
     <string name="fail_apply">Application failed, please try again</string>
     <string name="text_promote">For normal use, please enter the setting to complete the setting steps.</string>
+    <string name="loading_keyboard">Loading…</string>
 </resources>

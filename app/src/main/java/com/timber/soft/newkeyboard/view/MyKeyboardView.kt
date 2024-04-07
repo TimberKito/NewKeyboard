@@ -101,10 +101,7 @@ class MyKeyboardView @JvmOverloads constructor(
             )
             if (press != null) {
                 if (default != null) {
-                    val listDrawable = StateListDrawable().apply {
-                        addState(intArrayOf(android.R.attr.state_pressed), press)
-                        addState(intArrayOf(), default)
-                    }
+                    val listDrawable = getStatus(default,press)
                     functionBackgroundDraw = listDrawable
                     normalBackgroundDraw = listDrawable
                     spBackgroundDraw = listDrawable

@@ -3,6 +3,7 @@ package com.timber.soft.newkeyboard.activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -11,13 +12,41 @@ import android.view.View
 import android.view.inputmethod.InputMethodInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import com.timber.soft.newkeyboard.R
 import com.timber.soft.newkeyboard.databinding.ActivityApplyBinding
 import com.timber.soft.newkeyboard.tools.StatusBarTools
 
-class ApplyActivity : AppCompatActivity() {
+class ApplyActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityApplyBinding
     private lateinit var inputManager: InputMethodManager
+    private lateinit var listener: BroadcastReceiver
+
+    private fun chooseKeyboard() {
+        inputManager.showInputMethodPicker()
+    }
+
+    private fun applyKeyboard() {
+        Intent(Settings.ACTION_INPUT_METHOD_SETTINGS).apply {
+            startActivity(this)
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            binding.idStep2 -> {
+                chooseKeyboard()
+            }
+
+            binding.idStep1 -> {
+                applyKeyboard()
+            }
+
+            binding.applyBack -> {
+                finish()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +62,14 @@ class ApplyActivity : AppCompatActivity() {
             window.statusBarColor = Color.TRANSPARENT
         }
         inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        binding.applyBack.setOnClickListener() {
-            finish()
-        }
-        binding.idStep1.setOnClickListener() {
-            applyKeyboard()
-        }
-        binding.idStep2.setOnClickListener() {
-            chooseKeyboard()
-        }
+
+        updateUi()
+        listener = StepReceive()
+        register()
+
+        binding.idStep1.setOnClickListener(this)
+        binding.idStep2.setOnClickListener(this)
+        binding.applyBack.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -49,34 +77,9 @@ class ApplyActivity : AppCompatActivity() {
         updateUi()
     }
 
-    private fun chooseKeyboard() {
-        inputManager.showInputMethodPicker()
-    }
-
-    private fun applyKeyboard() {
-        Intent(Settings.ACTION_INPUT_METHOD_SETTINGS).apply {
-            startActivity(this)
-        }
-    }
-
-    private fun updateUi() {
-        binding.idStep1.setSelected(isEnable())
-        binding.idStep2.setSelected(isChoose())
-    }
-
-    private fun isChoose(): Boolean {
-        Settings.Secure.getString(contentResolver, Settings.Secure.DEFAULT_INPUT_METHOD).let { id ->
-            return id.startsWith(packageName)
-        }
-    }
-
-    private fun isEnable(): Boolean {
-        for (info: InputMethodInfo in inputManager.enabledInputMethodList) {
-            if (info.id.startsWith(packageName)) {
-                return true
-            }
-        }
-        return false
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(listener)
     }
 
     inner class StepReceive : BroadcastReceiver() {
@@ -85,4 +88,41 @@ class ApplyActivity : AppCompatActivity() {
         }
     }
 
+    private fun register() {
+        registerReceiver(listener, IntentFilter(Intent.ACTION_INPUT_METHOD_CHANGED))
+    }
+
+    private fun updateUi() {
+        if (isEnable()) {
+            binding.idStep1.setBackgroundResource(R.drawable.shape_theme_set_over)
+        } else {
+            binding.idStep1.setBackgroundResource(R.drawable.shape_theme_set)
+        }
+        if (isChoose()) {
+            binding.idStep2.setBackgroundResource(R.drawable.shape_theme_set_over)
+        } else {
+            binding.idStep2.setBackgroundResource(R.drawable.shape_theme_set)
+        }
+    }
+
+    /**
+     * 检查是否设置键盘
+     */
+    private fun isChoose(): Boolean {
+        Settings.Secure.getString(contentResolver, Settings.Secure.DEFAULT_INPUT_METHOD).let { id ->
+            return id.startsWith(packageName)
+        }
+    }
+
+    /**
+     * 检查是否启用键盘
+     */
+    private fun isEnable(): Boolean {
+        for (info: InputMethodInfo in inputManager.enabledInputMethodList) {
+            if (info.id.startsWith(packageName)) {
+                return true
+            }
+        }
+        return false
+    }
 }

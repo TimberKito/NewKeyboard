@@ -37,9 +37,12 @@
                 android:resource="@xml/key_view" />
         </service>
 
-
-        <activity android:name=".activity.DetailsActivity" />
-        <activity android:name=".activity.ApplyActivity" />
+        <activity
+            android:name=".activity.DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ApplyActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

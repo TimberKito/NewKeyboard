@@ -10,16 +10,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="18dp"
         android:text="text_TAB"
-
         android:textColor="@color/black"
         android:textSize="14sp" />
 
     <View
         android:id="@+id/line_index"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:background="@color/theme_color" />
 
 </LinearLayout>
