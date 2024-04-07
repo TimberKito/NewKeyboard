@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.timber.soft.newkeyboard.view.MyKeyboardView
+        android:id="@+id/my_custom_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:keyBackground="@drawable/shape_white_keyboard"
+        android:keyTextSize="15sp"
+        android:labelTextSize="15sp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp" />
+
+</FrameLayout>

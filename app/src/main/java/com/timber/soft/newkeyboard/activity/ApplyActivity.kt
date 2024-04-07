@@ -67,7 +67,7 @@ class ApplyActivity : AppCompatActivity() {
     private fun isChoose(): Boolean {
         Settings.Secure.getString(contentResolver, Settings.Secure.DEFAULT_INPUT_METHOD).let { id ->
             return id.startsWith(packageName)
-        } ?: return false
+        }
     }
 
     private fun isEnable(): Boolean {

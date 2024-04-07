@@ -11,4 +11,5 @@
     <string name="apply_step2_eanble">Step 2: Enable</string>
     <string name="succ_apply">Application successful</string>
     <string name="fail_apply">Application failed, please try again</string>
+    <string name="text_promote">For normal use, please enter the setting to complete the setting steps.</string>
 </resources>
