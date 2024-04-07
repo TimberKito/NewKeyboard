@@ -11,6 +11,7 @@ import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.timber.soft.newkeyboard.R
 import com.timber.soft.newkeyboard.databinding.ActivityApplyBinding
@@ -70,6 +71,8 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         binding.idStep1.setOnClickListener(this)
         binding.idStep2.setOnClickListener(this)
         binding.applyBack.setOnClickListener(this)
+
+
     }
 
     override fun onResume() {
@@ -103,6 +106,24 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             binding.idStep2.setBackgroundResource(R.drawable.shape_theme_set)
         }
+        if (isChoose()&&isEnable()){
+            showDialog()
+        }
+    }
+
+    private fun showDialog() {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        // 设置对话框标题和消息
+        alertDialogBuilder.setTitle("Settings")
+        alertDialogBuilder.setMessage("You have successfully activated the soft keyboard!")
+        // 设置确定按钮
+        alertDialogBuilder.setPositiveButton("OK") { dialog, which ->
+            // 关闭当前 Activity
+            finish()
+        }
+        // 创建并显示对话框
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
     /**

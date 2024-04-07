@@ -20,6 +20,9 @@ class AppInputMethodService : InputMethodService(), OnKeyboardActionListener {
     private var mouble = false
     private var laTime = -3L
 
+    /**
+     * 大小写转换
+     */
     private fun keyCase(toBig: Boolean, keyboard: Keyboard) {
         for (key in keyboard.keys) {
             if (!key.label.isNullOrEmpty()) {
@@ -38,6 +41,9 @@ class AppInputMethodService : InputMethodService(), OnKeyboardActionListener {
         }
     }
 
+    /**
+     * 切换键盘
+     */
     private fun changeXml(mode: Int) {
         binding.myCustomInput.run {
             when (mode) {
@@ -178,7 +184,6 @@ class AppInputMethodService : InputMethodService(), OnKeyboardActionListener {
         }
 
     }
-
 
     override fun onText(text: CharSequence?) {
 
