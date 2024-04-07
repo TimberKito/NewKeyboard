@@ -36,15 +36,15 @@ class MyKeyboardView @JvmOverloads constructor(
         lateinit var spBackgroundDraw: Drawable
         lateinit var normalBackgroundDraw: Drawable
         var icShittLock: Drawable? =
-            ContextCompat.getDrawable(context, R.drawable.svg_shift_lit)
+            ContextCompat.getDrawable(context, R.drawable.svg_shift)
         var icDel: Drawable? =
-            ContextCompat.getDrawable(context, R.drawable.svg_dele)
+            ContextCompat.getDrawable(context, R.drawable.svg_delete)
         var allBg: Drawable? =
             ContextCompat.getDrawable(context, R.mipmap.main_bg)
         var icBshift: Drawable? =
-            ContextCompat.getDrawable(context, R.drawable.svg_shift_lit)
+            ContextCompat.getDrawable(context, R.drawable.svg_shift)
         var icSshift: Drawable? =
-            ContextCompat.getDrawable(context, R.drawable.svg_shift_lit)
+            ContextCompat.getDrawable(context, R.drawable.svg_shift)
 
         @RequiresApi(Build.VERSION_CODES.M)
         var keycolor: Int = context.resources.getColor(R.color.white, null)
@@ -87,8 +87,6 @@ class MyKeyboardView @JvmOverloads constructor(
                 }
                 eventT = xmlP.next()
             }
-
-
         }
 
 
@@ -151,7 +149,6 @@ class MyKeyboardView @JvmOverloads constructor(
 
                 }
 
-
                 getbgic(con, it.plus(AppVal.parent_path).plus(AppVal.title_shitf_ic))?.let {
                     icSshift = it
                     icBshift = it
@@ -209,9 +206,9 @@ class MyKeyboardView @JvmOverloads constructor(
                 myKey.icon = this
 
                 var icon_w = myKey.icon.intrinsicWidth.toFloat()
-                var icon_wr = icon_w / myKey.width.toFloat()
+                val icon_wr = icon_w / myKey.width.toFloat()
                 var icon_h = myKey.icon.intrinsicHeight.toFloat()
-                var icon_hr = icon_h / myKey.height.toFloat()
+                val icon_hr = icon_h / myKey.height.toFloat()
 
 
                 var tep1 = 0f

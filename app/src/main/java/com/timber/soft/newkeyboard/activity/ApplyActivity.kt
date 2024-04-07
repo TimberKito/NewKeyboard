@@ -72,7 +72,6 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         binding.idStep2.setOnClickListener(this)
         binding.applyBack.setOnClickListener(this)
 
-
     }
 
     override fun onResume() {
@@ -106,7 +105,7 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             binding.idStep2.setBackgroundResource(R.drawable.shape_theme_set)
         }
-        if (isChoose()&&isEnable()){
+        if (isChoose() && isEnable()) {
             showDialog()
         }
     }

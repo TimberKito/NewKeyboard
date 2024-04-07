@@ -20,6 +20,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.tabs.TabLayout
 import com.timber.soft.newkeyboard.R
 import com.timber.soft.newkeyboard.databinding.ActivityMainBinding
@@ -60,11 +61,8 @@ class MainActivity : AppCompatActivity() {
                 (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE) or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = Color.TRANSPARENT
         }
-
         initDrawer()
-
         initTabLayOut()
-
         binding.viewpager.offscreenPageLimit = 3
         binding.viewpager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getCount(): Int {
@@ -81,6 +79,23 @@ class MainActivity : AppCompatActivity() {
         }
         binding.tabLayout.setupWithViewPager(binding.viewpager)
 
+
+//        val toggleGroup = findViewById<MaterialButtonToggleGroup>(R.id.toggle_group)
+//        toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
+//            if (isChecked) {
+//                when (checkedId) {
+//                    R.id.bt1 -> binding.drawerParent.closeDrawer(GravityCompat.END)
+//                    R.id.bt2 -> binding.drawerParent.openDrawer(GravityCompat.END)
+//                }
+//            }
+//        }
+
+        binding.bt1.setOnClickListener(){
+            binding.drawerParent.closeDrawer(GravityCompat.END)
+        }
+        binding.bt2.setOnClickListener(){
+            binding.drawerParent.openDrawer(GravityCompat.END)
+        }
     }
 
     private fun initTabLayOut() {
@@ -128,7 +143,7 @@ class MainActivity : AppCompatActivity() {
         val textView = TextView(this)
         //字体样式
         val selectedSize =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 22f, resources.displayMetrics)
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 24f, resources.displayMetrics)
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, selectedSize)
         textView.typeface = Typeface.defaultFromStyle(Typeface.BOLD) //加粗
         textView.gravity = Gravity.CENTER
@@ -139,6 +154,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initDrawer() {
+        binding.drawerParent.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         binding.layoutRate.setOnClickListener() {
             val url = getString(R.string.share_link) + packageName
             // 创建intent打开链接
@@ -159,14 +175,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ApplyActivity::class.java)
             startActivity(intent)
         }
+        binding.drawerBack.setOnClickListener(){
+            binding.drawerParent.closeDrawer(GravityCompat.END)
+        }
         // 绑定抽屉中的版本信息
         val versionName = getVersionName()
         binding.textAppVersion.text = versionName
-
-        // 打开抽屉
-        binding.imageMenu.setOnClickListener() {
-            binding.drawerParent.openDrawer(GravityCompat.START)
-        }
 
         binding.drawerParent.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {

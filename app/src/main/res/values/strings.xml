@@ -13,4 +13,6 @@
     <string name="fail_apply">Application failed, please try again</string>
     <string name="text_promote">For normal use, please enter the setting to complete the setting steps.</string>
     <string name="loading_keyboard">Loading…</string>
+    <string name="but_home">Home</string>
+    <string name="but_info">Menu</string>
 </resources>
