@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.timber.soft.newkeyboard.view.MyKeyboardView
+    <com.timber.soft.newkeyboard.activityandview.MyKeyboardView
         android:id="@+id/my_custom_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

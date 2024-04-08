@@ -1,4 +1,4 @@
-package com.timber.soft.newkeyboard.activity
+package com.timber.soft.newkeyboard.activityandview
 
 import android.content.Context
 import android.content.Intent
@@ -23,7 +23,7 @@ import com.bumptech.glide.request.target.Target
 import com.timber.soft.newkeyboard.R
 import com.timber.soft.newkeyboard.databinding.ActivityDetailsBinding
 import com.timber.soft.newkeyboard.listener.ApplyListener
-import com.timber.soft.newkeyboard.model.DataModel
+import com.timber.soft.newkeyboard.tools.DataModel
 import com.timber.soft.newkeyboard.tools.AppVal
 import com.timber.soft.newkeyboard.tools.StatusBarTools
 import net.sf.sevenzipjbinding.ArchiveFormat
@@ -265,7 +265,6 @@ class DetailsActivity : AppCompatActivity(), ApplyListener {
         }
 
     }
-
 
     private fun getAllThemePath(zip: String): String {
         val result = sp.getString(zip, "")

@@ -1,4 +1,4 @@
-package com.timber.soft.newkeyboard.view
+package com.timber.soft.newkeyboard.activityandview
 
 import android.annotation.SuppressLint
 import android.content.Context

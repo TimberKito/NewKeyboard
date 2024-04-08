@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingStart="12dp"
     android:paddingEnd="12dp"
-    tools:context=".activity.DetailsActivity">
+    tools:context=".activityandview.DetailsActivity">
 
     <!--主视图-->
     <androidx.constraintlayout.widget.ConstraintLayout

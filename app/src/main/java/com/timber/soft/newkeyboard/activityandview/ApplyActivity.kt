@@ -1,4 +1,4 @@
-package com.timber.soft.newkeyboard.activity
+package com.timber.soft.newkeyboard.activityandview
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -67,7 +67,6 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         updateUi()
         listener = StepReceive()
         register()
-
         binding.idStep1.setOnClickListener(this)
         binding.idStep2.setOnClickListener(this)
         binding.applyBack.setOnClickListener(this)

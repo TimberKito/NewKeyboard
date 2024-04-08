@@ -1,4 +1,4 @@
-package com.timber.soft.newkeyboard.adapter
+package com.timber.soft.newkeyboard.fragment
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.timber.soft.newkeyboard.R
-import com.timber.soft.newkeyboard.model.DataModel
-import com.timber.soft.newkeyboard.model.RootModel
+import com.timber.soft.newkeyboard.tools.DataModel
+import com.timber.soft.newkeyboard.tools.RootModel
 
 class MyPagerAdapter(
     private val context: Context,
@@ -55,12 +55,12 @@ class MyPagerAdapter(
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
-    ): MyPagerAdapter.PreViewHolder {
+    ): PreViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_pre_img, parent, false)
         return PreViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyPagerAdapter.PreViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PreViewHolder, position: Int) {
         val dataModel = dataModels[position % dataModels.size]
         holder.loadPreImg(context, dataModel.thumb, holder.imgItemView)
 

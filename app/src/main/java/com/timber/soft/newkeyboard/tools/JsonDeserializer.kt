@@ -1,4 +1,4 @@
-package com.timber.soft.newkeyboard.model
+package com.timber.soft.newkeyboard.tools
 
 import android.content.Context
 import com.google.gson.Gson

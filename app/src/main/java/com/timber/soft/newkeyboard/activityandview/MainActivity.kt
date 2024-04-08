@@ -1,4 +1,4 @@
-package com.timber.soft.newkeyboard.activity
+package com.timber.soft.newkeyboard.activityandview
 
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -20,13 +20,12 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.tabs.TabLayout
 import com.timber.soft.newkeyboard.R
 import com.timber.soft.newkeyboard.databinding.ActivityMainBinding
 import com.timber.soft.newkeyboard.fragment.VPFragment
-import com.timber.soft.newkeyboard.model.JsonDeserializer.parseJsonFromAssets
-import com.timber.soft.newkeyboard.model.RootModel
+import com.timber.soft.newkeyboard.tools.JsonDeserializer.parseJsonFromAssets
+import com.timber.soft.newkeyboard.tools.RootModel
 import com.timber.soft.newkeyboard.tools.StatusBarTools.dpCovertPx
 
 class MainActivity : AppCompatActivity() {
@@ -78,17 +77,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.tabLayout.setupWithViewPager(binding.viewpager)
-
-
-//        val toggleGroup = findViewById<MaterialButtonToggleGroup>(R.id.toggle_group)
-//        toggleGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
-//            if (isChecked) {
-//                when (checkedId) {
-//                    R.id.bt1 -> binding.drawerParent.closeDrawer(GravityCompat.END)
-//                    R.id.bt2 -> binding.drawerParent.openDrawer(GravityCompat.END)
-//                }
-//            }
-//        }
 
         binding.bt1.setOnClickListener(){
             binding.drawerParent.closeDrawer(GravityCompat.END)
