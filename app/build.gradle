@@ -4,11 +4,21 @@ plugins {
 }
 
 android {
+
+//    signingConfigs {
+//        debug {
+//            storeFile file('D:\\Android_Files\\NewKeyboard\\info\\key0.jks')
+//            storePassword 'kb123456'
+//            keyPassword 'kb123456'
+//            keyAlias 'kb_key0'
+//        }
+//    }
+
     namespace 'com.timber.soft.newkeyboard'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.timber.soft.newkeyboard"
+        applicationId "com.theme.keyboard.fancy"
         minSdk 22
         targetSdk 34
         versionCode 1
@@ -22,6 +32,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+//        debug {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

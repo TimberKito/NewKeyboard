@@ -159,7 +159,6 @@ class MyKeyboardView @JvmOverloads constructor(
                 )?.let { drawBG ->
                     icDel = getStatus(drawBG, drawBG)
 
-
                 }
                 getbgic(con, it.plus(AppVal.parent_path).plus(AppVal.title_shitf_ic_lock))?.let {
                     icShittLock = it

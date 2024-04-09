@@ -20,3 +20,13 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep class * implements com.google.gson.TypeAdapter { *; }
+-keep class com.google.gson.internal.LinkedTreeMap { *; }
+-keep class com.timber.soft.newkeyboard.tools.** { *; }
+
+-keep class com.omicronapplications.** { *; }
+-keep class net.sf.sevenzipjbinding.** { *; }

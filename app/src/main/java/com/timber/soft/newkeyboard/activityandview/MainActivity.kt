@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE) or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             window.statusBarColor = Color.TRANSPARENT
         }
+
         initDrawer()
         initTabLayOut()
         binding.viewpager.offscreenPageLimit = 3
